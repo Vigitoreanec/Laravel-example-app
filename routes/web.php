@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 use Whoops\Run;
 
@@ -18,31 +19,6 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::get('/posts', function () {
-    return view('posts')
-        ->with('posts', [
-            [
-                'id' => 1,
-                'title' => 'Post 1',
-                'text' => 'text Post 1'
-            ],
-            [
-                'id' => 2,
-                'title' => 'Post 2',
-                'text' => 'text Post 2'
-            ],
-            [
-                'id' => 3,
-                'title' => 'Post 3',
-                'text' => 'text Post 3'
-            ]
-        ]);
-})->name('posts');
+Route::get('/posts', [PostsController::class, 'index'])->name('posts');
 
-Route::get('/post/{id}', function (string $id) {
-    return view('post')
-        ->with('post', [
-            'title' => 'title' . $id,
-            'text' => 'text' . $id
-        ]);
-})->where('id', '[0-9]+')->name('post');
+Route::get('/post/{id}', [PostsController::class, 'show'])->where('id', '[0-9]+')->name('post');

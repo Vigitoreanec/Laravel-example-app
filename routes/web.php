@@ -16,7 +16,7 @@ use Whoops\Run;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 
 Route::get('/posts', function () {
     return view('posts')
@@ -37,7 +37,7 @@ Route::get('/posts', function () {
                 'text' => 'text Post 3'
             ]
         ]);
-});
+})->name('posts');
 
 Route::get('/post/{id}', function (string $id) {
     return view('post')
@@ -45,4 +45,4 @@ Route::get('/post/{id}', function (string $id) {
             'title' => 'title' . $id,
             'text' => 'text' . $id
         ]);
-});
+})->where('id', '[0-9]+')->name('post');

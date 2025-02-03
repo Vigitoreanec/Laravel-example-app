@@ -1,2 +1,2 @@
-<a href="/">Главная</a>
-<a href="/posts">Посты</a>
+<a href="<?= route('home') ?>">Главная</a>
+<a href="<?= route('posts') ?>">Посты</a>

@@ -2,44 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Posts;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    public function index()
+    public function index(Posts $posts)
     {
-        $posts = [
-            [
-                'id' => 1,
-                'slug' => 'first_post',
-                'title' => 'Post 1',
-                'text' => 'text Post 1'
-            ],
-            [
-                'id' => 2,
-                'slug' => 'second_post',
-                'title' => 'Post 2',
-                'text' => 'text Post 2'
-            ],
-            [
-                'id' => 3,
-                'slug' => 'third_post',
-                'title' => 'Post 3',
-                'text' => 'text Post 3'
-            ]
-        ];
+
+        $posts = $posts->getPosts();
+
         return view('posts', [
             'posts' => $posts
         ]);
     }
 
-    public function show(string $id)
+    public function show(Posts $posts, string $id)
     {
-        $post = [
-            'id' => $id,
-            'title' => 'Title' . $id,
-            'text' => 'text title' . $id
-        ];
+        $post = $posts->getPost($id);
+
         return view('post', [
             'post' => $post
         ]);

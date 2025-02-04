@@ -1,3 +1,11 @@
+@extends('layouts.main')
+@section('title', 'Пост')
+
+@section('menu')
+@include('menu')    
+@endsection
+
+@section('content')
 
 <h1>Пост</h1>
 <!-- 
@@ -10,3 +18,5 @@
 <!-- <?php else: ?>
     НЕт такого Поста
 <?php endif; ?> -->
+
+@endsection

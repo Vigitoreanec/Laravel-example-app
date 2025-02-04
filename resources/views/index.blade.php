@@ -1,4 +1,11 @@
-<?php include "menu.php"; ?>
+@extends('layouts.main')
+@section('title', 'Главная')
+
+@section('menu')
+@include('menu')    
+@endsection
+
+@section('content')
 
 <h2>Главная страница</h2>
 <form action="/?c=auth&a=login" method="post">
@@ -17,8 +24,7 @@
                 width: auto;
                 height: 30px;
                 text-align: center;"></input>
-            <a class="btn btn-primary" href="/?c=auth&a=logout"
-                style=" position: relative;
+            <a class="btn btn-primary" href="/?c=auth&a=logout" style=" position: relative;
                             width: auto;
                             height: 40px;
                             text-align: center;">
@@ -26,3 +32,4 @@
             </a>
         </div>
 </form>
+@endsection

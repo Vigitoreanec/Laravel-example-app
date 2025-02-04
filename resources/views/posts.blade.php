@@ -1,7 +1,12 @@
-{{--
-<?php
-include "menu.php";
-?> --}}
+@extends('layouts.main')
+@section('title', 'Посты')
+
+@section('menu')
+@include('menu')    
+@endsection
+
+@section('content')
+
 
 <section style="text-align: center;  
                     margin-top: 0;
@@ -38,3 +43,4 @@ include "menu.php";
         @endforelse
     </div>
 </section>
+@endsection

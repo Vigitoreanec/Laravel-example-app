@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\admin\IndexController as AdminController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+
 use Whoops\Run;
 
 /*
@@ -35,10 +37,12 @@ Route::name('admin.')
     // ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
+        Route::get('/users', [AdminController::class, 'users'])->name('users');
         Route::get('/posts', [AdminController::class, 'posts'])->name('posts');
         Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
     });
 
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');

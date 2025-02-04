@@ -1,7 +1,5 @@
-<?php
+<?php include "menu.php"; ?>
 
-include "menu.php";
-?>
 <h2>Главная страница</h2>
 <form action="/?c=auth&a=login" method="post">
     <div class="row" style="text-align: center;">

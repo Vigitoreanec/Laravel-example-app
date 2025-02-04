@@ -21,4 +21,11 @@ Route::get('/', function () {
 
 Route::get('/posts', [PostsController::class, 'index'])->name('posts');
 
-Route::get('/post/{id}', [PostsController::class, 'show'])->where('id', '[0-9]+')->name('post');
+Route::get('/post/{slug}', [PostsController::class, 'show'])->where('id', '[0-9]+')->name('post');
+
+Route::name('posts.')
+    ->prefix('posts')
+    ->group(function () {
+        Route::get('/{id}', [PostsController::class, 'show'])->where('id', '[0-9]+')->name('post');
+        Route::get('/', [PostsController::class, 'index'])->name('posts');
+    });

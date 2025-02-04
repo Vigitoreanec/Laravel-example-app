@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Posts;
 use Illuminate\Http\Request;
 
+use function Laravel\Prompts\error;
+
 class PostsController extends Controller
 {
     public function index(Posts $posts)
@@ -21,6 +23,10 @@ class PostsController extends Controller
     {
         $post = $posts->getPost($id);
 
+        if(!$post)
+        {
+           abort(404,"НЕт такого поста!");
+        }
         return view('post', [
             'post' => $post
         ]);

@@ -37,6 +37,6 @@ class Posts
                 return $post;
             }
         }
-        abort(404);
+        return null;
     }
 }

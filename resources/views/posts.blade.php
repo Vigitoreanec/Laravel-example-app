@@ -24,11 +24,12 @@
 
                 <div style=" text-align: center; background: grey; height: auto; max-width: 250px; margin: 20px auto">
                     <div style="display:inline; position:relative;">
-                        <a href="/post/{{ $post['slug'] }}">
-                            <span>{{$post['title'] }}</span>
-                        </a>
-                        <!-- <a href="/?c=posts&a=delete&id=<?= $post['id'] ?>"> -->
-                        <span style="position:absolute; padding:0 5px; right:0;">❌</span>
+                        {{-- <a href="/post/{{ $post['slug'] }}"> --}}
+                            <a href="{{ route('post', $post['slug']) }}">
+                                <span>{{$post['title'] }}</span>
+                            </a>
+                            <!-- <a href="/?c=posts&a=delete&id=<?= $post['id'] ?>"> -->
+                            <span style="position:absolute; padding:0 5px; right:0;">❌</span>
                         </a>
                         <div class="u-align-center u-over-slide u-over-slide-1">
                             <span>{{ $post['text'] }}</span>

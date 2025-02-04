@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\IndexController as AdminController;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 use Whoops\Run;
@@ -29,3 +30,15 @@ Route::get('/post/{slug}', [PostsController::class, 'show'])->where('id', '[0-9]
 //         Route::get('/{id}', [PostsController::class, 'show'])->where('id', '[0-9]+')->name('post');
 //         Route::get('/', [PostsController::class, 'index'])->name('posts');
 //     });
+Route::name('admin.')
+    ->prefix('admin')
+    // ->middleware(['auth', 'admin'])
+    ->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+        Route::get('/posts', [AdminController::class, 'posts'])->name('posts');
+        Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
+    });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

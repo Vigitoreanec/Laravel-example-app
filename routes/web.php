@@ -4,7 +4,7 @@ use App\Http\Controllers\admin\IndexController as AdminController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 use Whoops\Run;
 
 /*
@@ -41,7 +41,6 @@ Route::name('admin.')
         Route::get('/posts', [AdminController::class, 'posts'])->name('posts');
         Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
     });
-
 
 Auth::routes();
 

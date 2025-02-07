@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.app')
 @section('title', 'Пост')
 
 @section('menu')
@@ -6,17 +6,29 @@
 @endsection
 
 @section('content')
-
-<h1>Пост</h1>
-<!-- 
-<?php if ($post): ?> -->
-<div style=" text-align: center; background: blue; height: auto; width: 350px; margin: 20px auto">
-    <h3>Пост {{$post['title'] }}</h3>
-    <span>ТЕКСТ {{ $post['text'] }}</span>
+<div style="text-align: center;  
+                    margin-top: 0;
+                    margin-bottom: 0;">
+    <h1>Пост</h1>
 </div>
 
-<!-- <?php else: ?>
-    НЕт такого Поста
-<?php endif; ?> -->
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="card-header">{{ $post['title'] }}</div>
+
+                <div class="card-body">
+
+                    {{ $post['text'] }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 @endsection

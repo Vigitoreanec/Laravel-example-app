@@ -14,7 +14,7 @@ class PostsController extends Controller
 
         $posts = $posts->getPosts();
 
-        return view('posts', [
+        return view('posts.index', [
             'posts' => $posts
         ]);
     }
@@ -27,7 +27,7 @@ class PostsController extends Controller
         {
            abort(404,"НЕт такого поста!");
         }
-        return view('post', [
+        return view('posts.show', [
             'post' => $post
         ]);
     }

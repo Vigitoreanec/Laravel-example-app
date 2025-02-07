@@ -2,7 +2,7 @@
 @section('title', 'Пост')
 
 @section('menu')
-@include('menu')    
+@include('parts.menu')    
 @endsection
 
 @section('content')

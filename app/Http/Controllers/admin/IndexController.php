@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
@@ -14,11 +13,16 @@ class IndexController extends Controller
 
     public function posts()
     {
-        return view('admin.posts');
+        return view('admin.posts.index');
     }
 
     public function categories()
     {
         return view('admin.categories');
+    }
+
+    public function create()
+    {
+        return view('admin.posts.create');
     }
 }

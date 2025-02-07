@@ -2,7 +2,7 @@
 @section('title', 'Посты')
 
 @section('menu')
-@include('menu')    
+@include('parts.menu')    
 @endsection
 
 @section('content')
@@ -25,7 +25,7 @@
                 <div style=" text-align: center; background: grey; height: auto; max-width: 250px; margin: 20px auto">
                     <div style="display:inline; position:relative;">
                         {{-- <a href="/post/{{ $post['slug'] }}"> --}}
-                            <a href="{{ route('post', $post['slug']) }}">
+                            <a href="{{ route('posts.show', $post['id']) }}">
                                 <span>{{$post['title'] }}</span>
                             </a>
                             <!-- <a href="/?c=posts&a=delete&id=<?= $post['id'] ?>"> -->

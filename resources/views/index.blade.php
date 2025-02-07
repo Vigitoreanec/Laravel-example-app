@@ -1,35 +1,31 @@
-@extends('layouts.main')
+@extends('layouts.app')
+
 @section('title', 'Главная')
 
 @section('menu')
-@include('menu')    
+@include('parts.menu')
 @endsection
 
 @section('content')
 
-<h2>Главная страница</h2>
-<form action="/?c=auth&a=login" method="post">
-    <div class="row" style="text-align: center;">
-        <div class="form-data">
-            <label>Логин</label><br />
-            <input type="text" name="login">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Блог</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <h2>Добро пожаловать в наш блог!</h2>
+                </div>
+            </div>
         </div>
-        <div class="form-data" style=" margin-top: 10px;">
-            <label>Пароль</label><br />
-            <input type="password" name="pass">
-        </div>
-        <div style="margin: 10px 20px;">
-            <input class="btn btn-primary" type="submit" value="Войти" style="
-                position: relative;
-                width: auto;
-                height: 30px;
-                text-align: center;"></input>
-            <a class="btn btn-primary" href="/?c=auth&a=logout" style=" position: relative;
-                            width: auto;
-                            height: 40px;
-                            text-align: center;">
-                Назад
-            </a>
-        </div>
-</form>
+    </div>
+</div>
+
 @endsection

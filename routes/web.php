@@ -22,26 +22,29 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::get('/posts', [PostsController::class, 'index'])->name('posts');
+//Route::get('/posts', [PostsController::class, 'index'])->name('posts');
 
-Route::get('/post/{slug}', [PostsController::class, 'show'])->where('id', '[0-9]+')->name('post');
+//Route::get('/post/{slug}', [PostsController::class, 'show'])->where('id', '[0-9]+')->name('post');
 
-// Route::name('posts.')
-//     ->prefix('posts')
-//     ->group(function () {
-//         Route::get('/{id}', [PostsController::class, 'show'])->where('id', '[0-9]+')->name('post');
-//         Route::get('/', [PostsController::class, 'index'])->name('posts');
-//     });
+Route::name('posts.')
+    ->prefix('posts')
+    ->group(function () {
+        Route::get('/{id}', [PostsController::class, 'show'])->where('id', '[0-9]+')->name('show');
+        Route::get('/', [PostsController::class, 'index'])->name('index');
+    });
+
 Route::name('admin.')
     ->prefix('admin')
     // ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
-        Route::get('/users', [AdminController::class, 'users'])->name('users');
+        Route::get('/create', [AdminController::class, 'create'])->name('create');
+        Route::get('/users', [AdminController::class, 'posts'])->name('users');
         Route::get('/posts', [AdminController::class, 'posts'])->name('posts');
+        Route::post('/store', [AdminController::class, 'store'])->name('store');
         Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
     });
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+//Route::get('/home', [HomeController::class, 'index'])->name('index');

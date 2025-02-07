@@ -5,8 +5,8 @@
 @include('parts.menu')    
 @endsection
 
-@section('content')
 
+@section('content')
 
 <section style="text-align: center;  
                     margin-top: 0;
@@ -25,14 +25,14 @@
                 <div style=" text-align: center; background: grey; height: auto; max-width: 250px; margin: 20px auto">
                     <div style="display:inline; position:relative;">
                         {{-- <a href="/post/{{ $post['slug'] }}"> --}}
-                            <a href="{{ route('posts.show', $post['id']) }}">
-                                <span>{{$post['title'] }}</span>
+                            <a href="{{ route('posts.show', $post->id) }}">
+                                <span>{{$post->title }}</span>
                             </a>
-                            <!-- <a href="/?c=posts&a=delete&id=<?= $post['id'] ?>"> -->
+                            <!-- <a href="/?c=posts&a=delete&id=<?= $post->id ?>"> -->
                             <span style="position:absolute; padding:0 5px; right:0;">❌</span>
-                        </a>
+                        {{-- </a> --}}
                         <div class="u-align-center u-over-slide u-over-slide-1">
-                            <span>{{ $post['text'] }}</span>
+                            <span>{{ $post->text }}</span>
                         </div>
                     </div>
                 </div>

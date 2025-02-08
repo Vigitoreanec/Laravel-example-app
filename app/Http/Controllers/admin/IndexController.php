@@ -38,7 +38,7 @@ class IndexController extends Controller
         //валидация должна происходить в контроллере
         $validated = $request->validate([
             'title' => 'required|min:5|max:255',
-            'text' => 'required|min:5|max:20000',
+            'text' => 'required|min:15|max:20000',
         ]);
 
         DB::table('posts')->insert($validated);
@@ -46,7 +46,7 @@ class IndexController extends Controller
 
 
 
-        return redirect()->route('posts.show', $id);
+        return redirect()->route('admin.posts', $id);
     }
 
     public function create()

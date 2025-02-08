@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password')
         ]);
         $this->call([
+            CategorySeeder::class,
             PostSeeder::class
         ]);
     }

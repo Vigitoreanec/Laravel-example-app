@@ -14,7 +14,7 @@
                 <div class="card-header">Посты</div>
 
                 <div class="card-body">
-                    <a href="{{ route('admin.create')}}" class="btn btn-success">создать Пост </a>
+                    <a href="{{ route('admin.posts.create')}}" class="btn btn-success">создать Пост </a>
                     @if(session('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session('success') }}

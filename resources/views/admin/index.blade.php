@@ -15,7 +15,7 @@
                 <div class="card-body" style="display: flex; justify-content: space-around;">
 
                     <h2>Добро пожаловать в админку!</h2>
-                    <a href="{{ route('admin.create')}}" class="btn btn-success">создать Пост </a>
+                    <a href="{{ route('admin.posts.create')}}" class="btn btn-success">создать Пост </a>
                 </div>
 
                 <section style="text-align: center;  

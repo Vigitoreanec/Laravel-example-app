@@ -18,7 +18,7 @@
                 <div class="card-header">Создать пост</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.store') }} ">
+                    <form method="POST" action="{{ route('admin.posts.store') }} ">
                         @csrf
 
                         <div class="row mb-3">

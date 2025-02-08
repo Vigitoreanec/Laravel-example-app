@@ -2,7 +2,11 @@
 @section('title', 'Пост')
 
 @section('menu')
+@if (auth())
+@include('admin.parts.menu')
+@else
 @include('parts.menu')    
+@endif
 @endsection
 
 @section('content')

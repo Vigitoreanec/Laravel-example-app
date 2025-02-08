@@ -29,7 +29,7 @@ Route::get('/', function () {
 Route::name('posts.')
     ->prefix('posts')
     ->group(function () {
-        Route::get('/{id}', [PostsController::class, 'show'])->where('id', '[0-9]+')->name('show');
+        Route::get('/{post}', [PostsController::class, 'show'])->where('post', '[0-9]+')->name('show');
         Route::get('/', [PostsController::class, 'index'])->name('index');
     });
 
@@ -39,9 +39,15 @@ Route::name('admin.')
     ->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/users', [AdminController::class, 'posts'])->name('users');
-        Route::get('/posts', [AdminController::class, 'posts'])->name('posts');
-        Route::get('/create', [AdminController::class, 'create'])->name('create');
-        Route::post('/store', [AdminController::class, 'store'])->name('store');
+
+        Route::name('posts.')
+            ->prefix('posts')
+            ->group(function () {
+                Route::get('/', [AdminController::class, 'posts'])->name('index');
+                Route::get('/create', [AdminController::class, 'create'])->name('create');
+                Route::post('/store', [AdminController::class, 'store'])->name('store');
+            });
+
         Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
     });
 

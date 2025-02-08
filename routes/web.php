@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\IndexController as AdminController;
+use App\Http\Controllers\admin\PostController as PostController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -43,9 +44,9 @@ Route::name('admin.')
         Route::name('posts.')
             ->prefix('posts')
             ->group(function () {
-                Route::get('/', [AdminController::class, 'posts'])->name('index');
-                Route::get('/create', [AdminController::class, 'create'])->name('create');
-                Route::post('/store', [AdminController::class, 'store'])->name('store');
+                Route::get('/', [PostController::class, 'posts'])->name('index');
+                Route::get('/create', [PostController::class, 'create'])->name('create');
+                Route::post('/store', [PostController::class, 'store'])->name('store');
             });
 
         Route::get('/categories', [AdminController::class, 'categories'])->name('categories');

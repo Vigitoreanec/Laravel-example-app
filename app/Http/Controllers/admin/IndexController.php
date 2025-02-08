@@ -3,18 +3,29 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $posts = DB::table('posts')->get()->toArray();
+        // dd($posts);
+
+        return view('admin.index',[
+            'posts' => $posts
+        ]);
     }
 
     public function posts()
     {
-        
-        return view('admin.posts.index');
+        $posts = DB::table('posts')->get()->toArray();
+        // dd($posts);
+
+        return view('admin.posts.index',[
+            'posts' => $posts
+        ]);
     }
 
     public function categories()
@@ -22,8 +33,29 @@ class IndexController extends Controller
         return view('admin.categories');
     }
 
+    public function store(Request $request) 
+    {
+        //валидация должна происходить в контроллере
+        $validated = $request->validate([
+            'title' => 'required|min:5|max:255',
+            'text' => 'required|min:5|max:20000',
+        ]);
+
+        DB::table('posts')->insert($validated);
+        $id = DB::getPdo()->lastInsertId();
+
+
+
+        return redirect()->route('posts.show', $id);
+    }
+
     public function create()
     {
         return view('admin.posts.create');
+    }
+
+    public function delete()
+    {
+        return view('admin.posts.delete');
     }
 }

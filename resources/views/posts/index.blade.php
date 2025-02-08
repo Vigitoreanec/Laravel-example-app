@@ -30,7 +30,7 @@
                             </a>
                             <!-- <a href="/?c=posts&a=delete&id=<?= $post->id ?>"> -->
                             <span style="position:absolute; padding:0 5px; right:0;">❌</span>
-                        {{-- </a> --}}
+                            {{-- </a> --}}
                         <div class="u-align-center u-over-slide u-over-slide-1">
                             <span>{{ $post->text }}</span>
                         </div>
@@ -38,7 +38,7 @@
                 </div>
             </div>
         @empty
-            <div>
+            <div style="    display: grid; align-content: center;   justify-content: center;">
                 <span>Нет постов</span>
             </div>
         @endforelse

@@ -38,9 +38,9 @@ Route::name('admin.')
     // ->middleware(['auth', 'admin'])
     ->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
-        Route::get('/create', [AdminController::class, 'create'])->name('create');
         Route::get('/users', [AdminController::class, 'posts'])->name('users');
         Route::get('/posts', [AdminController::class, 'posts'])->name('posts');
+        Route::get('/create', [AdminController::class, 'create'])->name('create');
         Route::post('/store', [AdminController::class, 'store'])->name('store');
         Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
     });

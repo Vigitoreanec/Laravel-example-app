@@ -43,5 +43,7 @@
             </div>
         @endforelse
     </div>
+    {{-- <div>{{$posts -> links('pagination::bootstrap-5') }}</div> --}}
+
 </section>
 @endsection

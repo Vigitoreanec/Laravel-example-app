@@ -18,7 +18,8 @@ class PostsController extends Controller
         //2)//$posts = DB::table('posts')->get()->toArray();
         // dd($posts);
 
-        $posts = Post::all();
+        $posts = Post::paginate(10);
+        
         return view('posts.index', [
             'posts' => $posts
         ]);

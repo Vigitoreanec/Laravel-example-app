@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +13,7 @@ class IndexController extends Controller
     {
         $posts = DB::table('posts')->get()->toArray();
         // dd($posts);
-
+        
         return view('admin.index',[
             'posts' => $posts
         ]);
@@ -22,7 +23,8 @@ class IndexController extends Controller
     {
         $posts = DB::table('posts')->get()->toArray();
         // dd($posts);
-
+        $posts = Post::paginate(10);
+        
         return view('admin.posts.index',[
             'posts' => $posts
         ]);

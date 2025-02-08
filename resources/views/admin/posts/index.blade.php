@@ -44,6 +44,7 @@
                             <span>Нет постов</span>
                         </div>
                     @endforelse
+                    <div>{{$posts -> links('pagination::bootstrap-4') }}</div>
             </div>
         </div>
     </div>

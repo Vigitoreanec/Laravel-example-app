@@ -12,7 +12,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">Посты</div>
-
+                
                 <div class="card-body">
                     <a href="{{ route('admin.create')}}" class="btn btn-success">создать Пост </a>
 

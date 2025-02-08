@@ -46,7 +46,7 @@ class IndexController extends Controller
 
 
 
-        return redirect()->route('admin.posts', $id);
+        return redirect()->route('posts.show', $id);
     }
 
     public function create()

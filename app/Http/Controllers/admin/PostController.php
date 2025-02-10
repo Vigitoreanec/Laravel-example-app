@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class PostController extends Controller
 {
@@ -62,8 +62,42 @@ class PostController extends Controller
         ]);
     }
 
-    public function delete()
+    public function edit(Post $post)
     {
-        return view('admin.posts.delete');
+
+        $categories = Category::all();
+
+        return view('admin.posts.edit', [
+            'categories' => $categories,
+            'post' => $post,
+        ]);
     }
+
+    public function update(Request $request, Post $post)
+    {
+        $validated = $request->validate([
+            'title' => 'required|min:5|max:255',
+            'text' => 'required|min:15|max:20000',
+            'category_id' => 'required|exists:categories,id'
+        ]);
+
+
+        $post->fill($validated);
+
+        if ($post->save()) {
+            return redirect()->route('posts.show', $post->id)->with('success', 'Пост успешно изменен!');
+        }
+        return back()->with('error', 'Ошибка изменения поста');
+    }
+
+    public function destroy(Post $post)
+    {
+        
+        $post->delete();
+        // if ($post->delete()) {
+        //     return redirect()->route('admin.posts.index')->with('success', 'Пост успешно удален!');
+        // }
+        return redirect()->route('admin.posts.index', $post)->with('success', 'Пост успешно удален');
+    }
+    
 }

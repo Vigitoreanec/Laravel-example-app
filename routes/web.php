@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\IndexController as AdminController;
 use App\Http\Controllers\admin\PostController as PostController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,7 @@ Route::name('admin.')
     ->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/users', [AdminController::class, 'posts'])->name('users');
+        Route::get('/categories', [CategoriesController::class, 'categories'])->name('categories');
 
         Route::name('posts.')
             ->prefix('posts')
@@ -47,9 +49,17 @@ Route::name('admin.')
                 Route::get('/', [PostController::class, 'posts'])->name('index');
                 Route::get('/create', [PostController::class, 'create'])->name('create');
                 Route::post('/store', [PostController::class, 'store'])->name('store');
+                Route::get('/edit/{post}', [PostController::class, 'edit'])->name('edit');
+                Route::put('/adit/{post}', [PostController::class, 'update'])->name('update');
+                Route::delete('/destroy/{post}', [PostController::class, 'destroy'])->name('destroy');
             });
 
-        Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
+        Route::name('categories.')
+            ->prefix('categories')
+            ->group(function () {
+                Route::get('/', [CategoriesController::class, 'index'])->name('index');
+                Route::get('/show', [CategoriesController::class, 'show'])->name('show');
+            });
     });
 
 Auth::routes();

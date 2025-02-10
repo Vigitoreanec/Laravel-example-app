@@ -15,6 +15,7 @@
 
                 <div class="card-body">
                     <a href="{{ route('admin.posts.create')}}" class="btn btn-success">создать Пост </a>
+
                     @if(session('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session('success') }}
@@ -31,20 +32,31 @@
                     @endif
 
                 </div>
-                <div class="card-body" style=" display: grid;">
-                    @forelse($posts as $post)
-                        <div style="display:inline; position:relative;">
-                            <a href="{{ route('posts.show', $post->id) }}">
-                                <span>{{$post->title }}</span>
-                            </a>
+                @forelse($posts as $post)
+                    <div class="card-body" style=" display: grid; align-items: center; margin: 5px;" >
+                        <div style="display: flex;
+                                                          align-items: center;
+                                                          justify-content: space-between;
+                                                          position: absolute;
+                                                          width: 95%;">
+                            <div style="position: relative;    float: left;">
+
+                                <a href="{{ route('posts.show', $post->id) }}">
+                                    <span style="margin: 20px">{{$post->title }}</span>
+                                </a>
+                            </div>
+                            <div style="position: relative;    float: right;">
+                                <a href="{{ route('admin.posts.edit', $post)}}" class="btn btn-primary">изменить Пост </a>
+                                <a href="{{ route('admin.posts.index', $post)}}" class="btn btn-danger">удалить Пост </a>
+                            </div>
                         </div>
-                    @empty
-                        </div>
-                        <div style="    display: grid; align-content: center;   justify-content: center;">
-                            <span>Нет постов</span>
-                        </div>
-                    @endforelse
-                    <div>{{$posts -> links('pagination::bootstrap-4') }}</div>
+                    </div>
+                @empty
+                    <div style="    display: grid; align-content: center;   justify-content: center;">
+                        <span>Нет постов</span>
+                    </div>
+                @endforelse
+                <div>{{$posts->links('pagination::bootstrap-4') }}</div>
             </div>
         </div>
     </div>

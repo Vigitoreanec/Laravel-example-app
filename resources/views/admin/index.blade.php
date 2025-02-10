@@ -16,6 +16,8 @@
 
                     <h2>Добро пожаловать в админку!</h2>
                     <a href="{{ route('admin.posts.create')}}" class="btn btn-success">создать Пост </a>
+                    <a href="{{ route('admin.posts.create')}}" class="btn btn-primary">изменить Пост </a>
+                    <a href="{{ route('admin.posts.create')}}" class="btn btn-danger">удалить Пост </a>
                 </div>
 
                 <section style="text-align: center;  
@@ -39,7 +41,7 @@
                                                 <span>{{$post->title }}</span>
                                             </a>
                                             <!-- <a href="/?c=posts&a=delete&id=<?= $post->id ?>"> -->
-                                            <span style="position:absolute; padding:0 5px; right:0;">❌</span>
+                                            <span style="position:absolute; padding:0 5px; right:0;" href="{{ route('admin.posts.destroy', $post) }}">❌</span>
                                             {{-- </a> --}}
                                         <div class="u-align-center u-over-slide u-over-slide-1">
                                             <span>{{ $post->text }}</span>

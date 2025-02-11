@@ -53,7 +53,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        dd('123');
+        
         return view('admin.categories.create');
     }
 

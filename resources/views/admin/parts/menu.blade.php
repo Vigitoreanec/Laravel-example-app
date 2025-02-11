@@ -9,7 +9,7 @@
     </li>
     @endauth
    <li class="nav-item">
-        <a class="nav-link @if (Route::is('admin.categories.index')) active @endif" href="{{ route('admin.categories.index') }}">Категории</a>
+        <a class="nav-link @if (Route::is('admin.category.index')) active @endif" href="{{ route('admin.categories.index') }}">Категории</a>
     </li>
 
 </ul>

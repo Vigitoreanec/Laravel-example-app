@@ -41,17 +41,17 @@ Route::name('admin.')
     ->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('/users', [AdminController::class, 'posts'])->name('users');
-        Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
+        //Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
 
         Route::name('categories.')
-            ->prefix('category')
+            ->prefix('categories')
             ->group(function () {
                 Route::get('/', [CategoryController::class, 'index'])->name('index');
-                Route::get('/{category}', [CategoryController::class, 'show'])->name('show');
                 Route::get('/create', [CategoryController::class, 'create'])->name('create');
                 Route::post('/store', [CategoryController::class, 'store'])->name('store');
                 Route::get('/edit/{category}', [CategoryController::class, 'edit'])->name('edit');
                 Route::put('/edit/{category}', [CategoryController::class, 'update'])->name('update');
+                Route::get('/{category}', [CategoryController::class, 'show'])->name('show');
             });
 
 
@@ -77,4 +77,4 @@ Route::name('admin.')
 
 Auth::routes();
 
-//Route::get('/home', [HomeController::class, 'index'])->name('index');
+//Route::get('/admin/categories/create', [CategoryController::class, 'create'])->name('admin.categories.create');

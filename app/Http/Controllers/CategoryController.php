@@ -53,17 +53,15 @@ class CategoryController extends Controller
 
     public function create()
     {
-        
+        dd('123');
         return view('admin.categories.create');
     }
 
-    public function edit()
+    public function edit(Category $category)
     {
-        $categories = Category::all();
-
 
         return view('admin.categories.edit', [
-            'category' => $categories
+            'category' => $category
         ]);
     }
 

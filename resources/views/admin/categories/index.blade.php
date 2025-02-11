@@ -45,7 +45,7 @@
                                                                                   width: 95%;">
                             <div style="position: relative;    float: left;">
 
-                                <a href="{{ route('admin.categories.show', $category->id) }}">
+                                <a href="{{ route('admin.categories.show', $category) }}">
                                     <span style="margin: 20px">{{$category->name }}</span>
                                 </a>
                             </div>

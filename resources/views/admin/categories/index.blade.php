@@ -16,7 +16,7 @@
                 <div class="card-header">Категории</div>
 
                 <div class="card-body">
-                    <a href="{{ route('admin.category.create')}}" class="btn btn-success">создать Категорию </a>
+                    <a href="{{ route('admin.categories.create')}}" class="btn btn-success">создать Категорию </a>
 
                     @if(session('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -42,15 +42,15 @@
                                                                               width: 95%;">
                             <div style="position: relative;    float: left;">
 
-                                <a href="{{ route('admin.category.show', $category) }}">
+                                <a href="{{ route('admin.categories.show', $category) }}">
                                     <span style="margin: 20px">{{$category->name }}</span>
                                 </a>
                             </div>
                             <div style="position: relative;    float: right;">
-                                <a href="{{ route('admin.category.edit', $category)}}" class="btn btn-primary">изменить
+                                <a href="{{ route('admin.categories.edit', $category)}}" class="btn btn-primary">изменить
                                     Категорию </a>
 
-                                <a href="{{ route('admin.category.index', $category)}}" class="btn btn-danger">удалить
+                                <a href="{{ route('admin.categories.index', $category)}}" class="btn btn-danger">удалить
                                     Категорию </a>
                             </div>
                         </div>

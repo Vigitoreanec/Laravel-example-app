@@ -43,7 +43,7 @@ Route::name('admin.')
         Route::get('/users', [AdminController::class, 'posts'])->name('users');
         Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
 
-        Route::name('category.')
+        Route::name('categories.')
             ->prefix('category')
             ->group(function () {
                 Route::get('/', [CategoryController::class, 'index'])->name('index');

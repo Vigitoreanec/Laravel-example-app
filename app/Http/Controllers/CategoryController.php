@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -59,9 +59,24 @@ class CategoryController extends Controller
 
     public function edit()
     {
+        $categories = Category::all();
 
 
+        return view('admin.categories.edit', [
+            'category' => $categories
+        ]);
+    }
 
-        return view('admin.categories.edit');
+    public function update(Request $request, Category $category)
+    {
+        $validated = $request->validate([
+            'name' => 'required|min:5|max:255',
+        ]);
+
+        $category->fill($validated);
+        if ($category->save()) {
+            return redirect()->route('posts.show', $category->id)->with('success', 'Категория успешно изменена!');
+        }
+        return back()->with('error', 'Ошибка изменения Категории');
     }
 }

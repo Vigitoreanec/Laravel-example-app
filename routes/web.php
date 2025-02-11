@@ -36,7 +36,7 @@ Route::name('posts.')
     });
 
 Route::name('admin.')
-    ->middleware(['auth', 'admin'])
+    ->middleware(['auth', 'is_admin'])
     ->prefix('admin')
     ->group(function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');

@@ -12,8 +12,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            
+            @include('parts.message')
+            
             <div class="card">
-                @include('parts.message')
                 <div class="card-header">Категории</div>
 
                 <div class="card-body">
@@ -37,10 +39,10 @@
                 @forelse($categories as $category)
                     <div class="card-body" style=" display: grid; align-items: center; margin: 5px;">
                         <div style="display: flex;
-                                                                              align-items: center;
-                                                                              justify-content: space-between;
-                                                                              position: absolute;
-                                                                              width: 95%;">
+                                                                                  align-items: center;
+                                                                                  justify-content: space-between;
+                                                                                  position: absolute;
+                                                                                  width: 95%;">
                             <div style="position: relative;    float: left;">
 
                                 <a href="{{ route('admin.categories.show', $category) }}">

@@ -9,9 +9,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            
+            @include('parts.message')
+            
             <div class="card">
-
-                @include('parts.message')
                 <div class="card-header">Админка</div>
 
                 <div class="card-body" style="display: flex; justify-content: space-around;">
@@ -43,7 +44,8 @@
                                                 <span>{{$post->title }}</span>
                                             </a>
                                             <!-- <a href="/?c=posts&a=delete&id=<?= $post->id ?>"> -->
-                                            <span style="position:absolute; padding:0 5px; right:0;" href="{{ route('admin.posts.destroy', $post) }}">❌</span>
+                                            <span style="position:absolute; padding:0 5px; right:0;"
+                                                href="{{ route('admin.posts.destroy', $post) }}">❌</span>
                                             {{-- </a> --}}
                                         <div class="u-align-center u-over-slide u-over-slide-1">
                                             <span>{{ $post->text }}</span>

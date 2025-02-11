@@ -3,7 +3,7 @@
 @section('title', 'Посты')
 
 @section('menu')
-    @include('parts.menu')
+    @include('admin.parts.menu')
 @endsection
 
 
@@ -13,10 +13,10 @@
             <div class="col-md-12">
 
 
-                <h2>Посты категории {{ $category->name }}</h2>
-                @forelse ($category->posts as $post)
+                <h2>Посты категории {{ $categories->name }}</h2>
+                @forelse ($posts as $post)
 
-                    <a href="{{ route('posts.show', $post) }}">{{ $category->name }} {{ $post->title }}</a><br>
+                    <a href="{{ route('posts.show', $post) }}">{{ $categories->name }} {{ $post->title }}</a><br>
                 @empty
                     <p>Нет постов</p>
                 @endforelse

@@ -33,6 +33,7 @@ class IndexController extends Controller
     public function categories()
     {
         $categories = Category::all();
+        
         return view('admin.categories', [
             'categories' => $categories
         ]);

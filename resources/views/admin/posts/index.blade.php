@@ -33,12 +33,12 @@
 
                 </div>
                 @forelse($posts as $post)
-                    <div class="card-body" style=" display: grid; align-items: center; margin: 5px;" >
+                    <div class="card-body" style=" display: grid; align-items: center; margin: 5px;">
                         <div style="display: flex;
-                                                          align-items: center;
-                                                          justify-content: space-between;
-                                                          position: absolute;
-                                                          width: 95%;">
+                                                              align-items: center;
+                                                              justify-content: space-between;
+                                                              position: absolute;
+                                                              width: 95%;">
                             <div style="position: relative;    float: left;">
 
                                 <a href="{{ route('posts.show', $post->id) }}">
@@ -47,6 +47,7 @@
                             </div>
                             <div style="position: relative;    float: right;">
                                 <a href="{{ route('admin.posts.edit', $post)}}" class="btn btn-primary">изменить Пост </a>
+
                                 <a href="{{ route('admin.posts.index', $post)}}" class="btn btn-danger">удалить Пост </a>
                             </div>
                         </div>

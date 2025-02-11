@@ -50,8 +50,8 @@ Route::name('admin.')
                 Route::get('/{category}', [CategoryController::class, 'show'])->name('show');
                 Route::get('/create', [CategoryController::class, 'create'])->name('create');
                 Route::post('/store', [CategoryController::class, 'store'])->name('store');
-                Route::post('/edit/{category}', [CategoryController::class, 'edit'])->name('edit');
-                Route::post('/edit/{category}', [CategoryController::class, 'update'])->name('update');
+                Route::get('/edit/{category}', [CategoryController::class, 'edit'])->name('edit');
+                Route::put('/edit/{category}', [CategoryController::class, 'update'])->name('update');
             });
 
 

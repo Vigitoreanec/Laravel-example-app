@@ -53,7 +53,7 @@ class CategoryController extends Controller
 
     public function create()
     {
-        
+
         return view('admin.categories.create');
     }
 
@@ -76,5 +76,15 @@ class CategoryController extends Controller
             return redirect()->route('posts.show', $category->id)->with('success', 'Категория успешно изменена!');
         }
         return back()->with('error', 'Ошибка изменения Категории');
+    }
+
+    public function destroy(Category $category)
+    {
+        
+        $category->delete();
+        if ($category->delete()) {
+            return redirect()->route('admin.categories.index')->with('success', 'Категория успешно удалена!');
+        }
+        return redirect()->route('admin.categories.index', $category)->with('error', 'Категория не удалена');
     }
 }

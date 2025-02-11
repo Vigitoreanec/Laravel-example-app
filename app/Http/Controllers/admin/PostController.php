@@ -99,4 +99,26 @@ class PostController extends Controller
         // }
         return redirect()->route('admin.posts.index', $post)->with('success', 'Пост успешно удален');
     }
+
+    public function addLike(string $id) 
+    {
+        // $post->likes+=1;
+        // $post->save();
+        $post = Post::find($id);
+
+        if ($post) {
+            $post->increment('likes');
+
+            return response()->json([
+                // 'success' => true,
+                'message' => 'Лайк успешно поставлен',
+                'likes' => $post->likes
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Пост не найден',
+        ], 404);
+    }
 }

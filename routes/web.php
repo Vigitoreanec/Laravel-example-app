@@ -52,6 +52,8 @@ Route::name('admin.')
                 Route::get('/edit/{category}', [CategoryController::class, 'edit'])->name('edit');
                 Route::put('/edit/{category}', [CategoryController::class, 'update'])->name('update');
                 Route::get('/{category}', [CategoryController::class, 'show'])->name('show');
+                Route::delete('/destroy/{category}', [CategoryController::class, 'destroy'])->name('destroy');
+
             });
 
 
@@ -64,6 +66,8 @@ Route::name('admin.')
                 Route::get('/edit/{post}', [PostController::class, 'edit'])->name('edit');
                 Route::put('/edit/{post}', [PostController::class, 'update'])->name('update');
                 Route::delete('/destroy/{post}', [PostController::class, 'destroy'])->name('destroy');
+                Route::post('/{post}/add/like', [PostController::class, 'addLike'])->name('like.add');
+
             });
     });
 // Route::name('categories.')

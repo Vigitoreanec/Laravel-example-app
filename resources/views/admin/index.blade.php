@@ -10,6 +10,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
+
+                @include('parts.message')
                 <div class="card-header">Админка</div>
 
                 <div class="card-body" style="display: flex; justify-content: space-around;">

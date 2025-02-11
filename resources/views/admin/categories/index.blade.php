@@ -13,6 +13,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
+                @include('parts.message')
                 <div class="card-header">Категории</div>
 
                 <div class="card-body">

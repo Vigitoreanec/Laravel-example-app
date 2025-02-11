@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
-use Exception;
-use Illuminate\Http\Request;
 
 
 class PostController extends Controller
@@ -30,20 +29,16 @@ class PostController extends Controller
             'posts' => $posts
         ]);
     }
-    public function store(Request $request)
+    public function store(UpdatePostRequest $request)
     {
         //валидация должна происходить в контроллере
-        $validated = $request->validate([
-            'title' => 'required|min:5|max:255',
-            'text' => 'required|min:15|max:20000',
-            'category_id' => 'required|exists:categories,id'
-        ]);
+        //$validated = $request->validate();
 
         // DB::table('posts')->insert($validated);
         // $id = DB::getPdo()->lastInsertId();
 
         try {
-            $post = Post::create($validated);
+            $post = Post::create($request->validated());
         } catch (\Exception $e) {
             return redirect()->route('admin.posts.create')->with('error', 'Ошибка добавления поста') .
                 $e->getMessage();
@@ -73,16 +68,10 @@ class PostController extends Controller
         ]);
     }
 
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
-        $validated = $request->validate([
-            'title' => 'required|min:5|max:255',
-            'text' => 'required|min:15|max:20000',
-            'category_id' => 'required|exists:categories,id'
-        ]);
 
-
-        $post->fill($validated);
+        $post->fill($request->validated());
 
         if ($post->save()) {
             return redirect()->route('posts.show', $post->id)->with('success', 'Пост успешно изменен!');
@@ -92,12 +81,11 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        
+
         $post->delete();
         // if ($post->delete()) {
         //     return redirect()->route('admin.posts.index')->with('success', 'Пост успешно удален!');
         // }
         return redirect()->route('admin.posts.index', $post)->with('success', 'Пост успешно удален');
     }
-    
 }

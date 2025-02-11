@@ -38,10 +38,14 @@ class PostController extends Controller
         // $id = DB::getPdo()->lastInsertId();
 
         try {
-            $post = Post::create($request->validated());
+            $imagePath = null;
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('posts', 'public');
+            }
+            $validated['image'] = $imagePath;
+            $post = Post::create($validated);
         } catch (\Exception $e) {
-            return redirect()->route('admin.posts.create')->with('error', 'Ошибка добавления поста') .
-                $e->getMessage();
+            return redirect()->route('admin.posts.create')->with('error', 'Ошибка добавления поста! ' . $e->getMessage());
         }
 
         //return redirect()->route('posts.show', $id)->with('success', 'Пост успешно добавлен');
@@ -71,10 +75,17 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post)
     {
 
-        $post->fill($request->validated());
+        $data = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('posts', 'public');
+            $data['image'] = $imagePath;
+        }
+
+        $post->fill($data);
 
         if ($post->save()) {
-            return redirect()->route('posts.show', $post->id)->with('success', 'Пост успешно изменен!');
+            return redirect()->route('posts.show', $post)->with('success', 'Пост успешно изменен!');
         }
         return back()->with('error', 'Ошибка изменения поста');
     }

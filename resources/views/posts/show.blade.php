@@ -3,9 +3,9 @@
 
 @section('menu')
 @if (auth())
-@include('admin.parts.menu')
+    @include('admin.parts.menu')
 @else
-@include('parts.menu')    
+    @include('parts.menu')    
 @endif
 @endsection
 
@@ -20,12 +20,18 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            @include('parts.message')
+
             <div class="card">
-                @include('parts.message')
 
                 <div class="card-header"> {{ $post->title }} </div>
 
-                <div class="card-body"> {{ $post->text }} </div>
+                <div class="card-body">
+                    @if ($post->image)
+                        <img class="w-25 me-2 float-start" src="{{ asset('storage/' . $post->image) }}" alt="img">
+                    @endif
+                    {{ $post->text }}
+                </div>
             </div>
         </div>
     </div>

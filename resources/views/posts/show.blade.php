@@ -38,7 +38,7 @@
                         Likes: <span id="likeCount">{{ $post->likes }}</span>
                     </button>
 
-                    <script>
+                    {{-- <script>
                         let buttonLike = document.querySelectorAll('.likeButton');
                         buttonLike.forEach((elem) => {
                             elem.addEventListener('click', () => {
@@ -55,7 +55,7 @@
 
                             })
                         });
-                    </script>
+                    </script> --}}
                 </div>
             </div>
         </div>

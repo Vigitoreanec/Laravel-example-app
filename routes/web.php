@@ -32,9 +32,9 @@ Route::post('/posts/{id}/add/like', [PostsController::class, 'addLike'])->name('
 Route::name('posts.')
     ->prefix('posts')
     ->group(function () {
-        //Route::post('/{post}/add/like', [PostsController::class, 'addLike'])->name('like.add');
         Route::get('/{post}', [PostsController::class, 'show'])->where('post', '[0-9]+')->name('show');
         Route::get('/', [PostsController::class, 'index'])->name('index');
+        //Route::post('/{post}/add/like', [PostsController::class, 'addLike'])->name('like.add');
     });
 
 Route::name('admin.')

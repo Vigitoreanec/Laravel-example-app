@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 
 class PostsController extends Controller
@@ -16,7 +17,7 @@ class PostsController extends Controller
         // dd($posts);
 
         $posts = Post::paginate(10);
-        
+
         return view('posts.index', [
             'posts' => $posts
         ]);
@@ -33,5 +34,28 @@ class PostsController extends Controller
         return view('posts.show', [
             'post' => $post
         ]);
+    }
+
+    public function addLike(string $id)
+    {
+        
+        // $post->likes+=1;
+        // $post->save();
+        $post = Post::find($id);
+
+        if ($post) {
+            $post->increment('likes');
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Лайк успешно поставлен',
+                'likes' => $post->likes
+            ]);
+        }
+
+        return response()->json([
+            'success' => false,
+            'message' => 'Пост не найден',
+        ], 404);
     }
 }

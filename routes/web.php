@@ -27,10 +27,12 @@ Route::get('/', function () {
 //Route::get('/posts', [PostsController::class, 'index'])->name('posts');
 
 //Route::get('/post/{slug}', [PostsController::class, 'show'])->where('id', '[0-9]+')->name('post');
+Route::post('/posts/{id}/add/like', [PostsController::class, 'addLike'])->name('posts.like.add');
 
 Route::name('posts.')
     ->prefix('posts')
     ->group(function () {
+        //Route::post('/{post}/add/like', [PostsController::class, 'addLike'])->name('like.add');
         Route::get('/{post}', [PostsController::class, 'show'])->where('post', '[0-9]+')->name('show');
         Route::get('/', [PostsController::class, 'index'])->name('index');
     });
@@ -53,7 +55,6 @@ Route::name('admin.')
                 Route::put('/edit/{category}', [CategoryController::class, 'update'])->name('update');
                 Route::get('/{category}', [CategoryController::class, 'show'])->name('show');
                 Route::delete('/destroy/{category}', [CategoryController::class, 'destroy'])->name('destroy');
-
             });
 
 
@@ -66,8 +67,6 @@ Route::name('admin.')
                 Route::get('/edit/{post}', [PostController::class, 'edit'])->name('edit');
                 Route::put('/edit/{post}', [PostController::class, 'update'])->name('update');
                 Route::delete('/destroy/{post}', [PostController::class, 'destroy'])->name('destroy');
-                Route::post('/{post}/add/like', [PostController::class, 'addLike'])->name('like.add');
-
             });
     });
 // Route::name('categories.')

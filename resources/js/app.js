@@ -1,4 +1,3 @@
-import axios from 'axios';
 import './bootstrap';
 
 // let buttonLike = document.querySelectorAll('.likeButton');

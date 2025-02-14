@@ -10,6 +10,7 @@
     </li>
 
     @guest
+    @else
         @if(Auth::user()->is_admin)
 
 
